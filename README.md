@@ -7,6 +7,73 @@ Please see the [GUIDELINES](GUIDELINES.md).
 
 ---
 
+## About this repository (fork)
+
+This is a fork of **[HelpingHandsVR/identity](https://github.com/HelpingHandsVR/identity)**.
+
+| | |
+| --- | --- |
+| Upstream | `HelpingHandsVR/identity` (default branch `v2025`) |
+| Role of this fork | The upstream brand assets, plus a **media team motion and broadcast pipeline** |
+| Extension assets | [`media-team/`](media-team) |
+| Extension revision | 2026 Edition, built on the 2025 design by Madison |
+
+The upstream assets (`logo/`, `logo_variants/`, `GUIDELINES.md`) are **never modified**. Everything the
+media team derives lives under `media-team/`, and that separation is what keeps merges from upstream
+conflict-free.
+
+### Media team extensions
+
+| Path | Contents |
+| --- | --- |
+| [`media-team/MEDIA_GUIDELINES.md`](media-team/MEDIA_GUIDELINES.md) | Media team guidelines — licensing and credit, clear space, minimum sizes and contrast, contributing back upstream |
+| [`media-team/overlays/`](media-team/overlays) | Transparent PNG/WebP logo overlays for OBS, Premiere Pro and After Effects |
+| [`media-team/templates/`](media-team/templates) | Thumbnail, poster and card news specifications with margin guides |
+| [`media-team/badges/`](media-team/badges) | Lower-third and sign-language avatar identity badges |
+
+Every image under `media-team/` is **generated** from the vectors in `logo/`. Edit the generator, not the output:
+
+```bash
+pip install -r media-team/requirements.txt
+python media-team/generate.py
+```
+
+### Where to start
+
+1. [`GUIDELINES.md`](GUIDELINES.md) — the brand rules, which always take precedence
+2. [`media-team/MEDIA_GUIDELINES.md`](media-team/MEDIA_GUIDELINES.md) — the media production rules
+3. The `README.md` in each folder — file lists and placement figures
+4. Credit every piece: `Credit: HelpingHandsVR Identity`
+
+### Staying in sync with upstream
+
+Register the `upstream` remote to keep following the original repository.
+
+```bash
+# once
+git remote add upstream https://github.com/HelpingHandsVR/identity.git
+
+# confirm the original default branch (v2025 as of 2026-09)
+git remote show upstream | sed -n '/HEAD branch/p'
+
+# sync
+git fetch upstream
+git switch v2025
+git merge --ff-only upstream/v2025
+git push origin v2025
+```
+
+Re-run `python media-team/generate.py` after any sync that touches `logo/`.
+The procedure for contributing assets back upstream is in
+[`media-team/MEDIA_GUIDELINES.md` §6](media-team/MEDIA_GUIDELINES.md#6-contributing-back-upstream).
+
+---
+
+<details>
+<summary><strong>한국어 (Korean)</strong></summary>
+
+> 위 영문 문서의 국문판입니다. 두 판본이 어긋날 경우 **영문판을 기준**으로 삼아 주세요.
+
 ## 이 저장소에 대하여 (포크)
 
 이 저장소는 **[HelpingHandsVR/identity](https://github.com/HelpingHandsVR/identity) 의 포크**입니다.
@@ -63,41 +130,7 @@ git push origin v2025
 ```
 
 `logo/` 가 변경된 동기화 이후에는 `python media-team/generate.py` 로 파생 자산을 다시 만듭니다.
-원본에 역기여(PR)하는 절차는 [`media-team/MEDIA_GUIDELINES.md` §6](media-team/MEDIA_GUIDELINES.md#6-원본-저장소로의-역기여-pr-절차) 을 따릅니다.
+원본에 역기여(PR)하는 절차는
+[`media-team/MEDIA_GUIDELINES.md` §6](media-team/MEDIA_GUIDELINES.md#6-contributing-back-upstream) 을 따릅니다.
 
----
-
-## About this repository (fork)
-
-This is a fork of **[HelpingHandsVR/identity](https://github.com/HelpingHandsVR/identity)** (upstream default branch: `v2025`).
-
-It carries the upstream brand assets unchanged, plus a **media team extension for motion and
-broadcast work** under [`media-team/`](media-team) — 2026 Edition, built on the 2025 design by Madison.
-
-- [`media-team/MEDIA_GUIDELINES.md`](media-team/MEDIA_GUIDELINES.md) — licensing and credit, clear space, minimum sizes, background contrast, and how to contribute assets back upstream
-- [`media-team/overlays/`](media-team/overlays) — transparent PNG/WebP logo overlays for OBS, Premiere Pro and After Effects
-- [`media-team/templates/`](media-team/templates) — thumbnail, poster and card news specifications with margin guides
-- [`media-team/badges/`](media-team/badges) — lower-third and sign-language avatar identity badges
-
-Nothing outside `media-team/` is modified, which keeps merges from upstream conflict-free.
-Every image under `media-team/` is generated from the vectors in `logo/` — edit `media-team/generate.py`, not the output:
-
-```bash
-pip install -r media-team/requirements.txt
-python media-team/generate.py
-```
-
-Read [`GUIDELINES.md`](GUIDELINES.md) first; it always takes precedence over the media team document.
-Credit every piece with `Credit: HelpingHandsVR Identity`.
-
-To track upstream:
-
-```bash
-git remote add upstream https://github.com/HelpingHandsVR/identity.git
-git fetch upstream
-git switch v2025
-git merge --ff-only upstream/v2025
-git push origin v2025
-```
-
-Re-run the generator after any sync that touches `logo/`.
+</details>

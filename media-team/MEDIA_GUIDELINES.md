@@ -1,5 +1,274 @@
-
 # Helping Hands Media Team Guidelines (2026 Edition)
+
+These guidelines cover **how the media team produces video, broadcast and social content**.
+They supplement — and never replace — [GUIDELINES.md](../GUIDELINES.md), the HelpingHandsVR brand
+document. **Where the two disagree, the upstream `GUIDELINES.md` always wins.**
+
+- Scope: every derived asset under `media-team/` (overlays, badges, template guides)
+- Base design: 2025 design by Madison (upstream `v2025`)
+- Revision: 2026 Edition — adds the specifications for the motion and broadcast pipeline
+
+> 한국어 문서는 이 문서 맨 아래의 접이식 섹션에 있습니다.
+
+---
+
+## 1. License compliance and credit
+
+### 1.1 License status
+
+Neither this repository nor upstream `HelpingHandsVR/identity` ships an explicit `LICENSE` file.
+The mark and its derivatives are therefore **not automatically free to use** — they may be used only
+within the community rules and the scope of `GUIDELINES.md`.
+
+- Distribution outside the community, commercial use, and merchandise need **prior approval from Helping Hands staff**.
+- If you are unsure whether a use is allowed, **ask first and build second**.
+- Update this section if upstream adds a `LICENSE`.
+
+### 1.2 Credit
+
+Every piece that shows the mark carries a credit.
+
+| Placement | String |
+| --- | --- |
+| Video outro / end card | `Credit: HelpingHandsVR Identity` |
+| Video description, post body | `Logo & identity: HelpingHandsVR Identity — https://github.com/HelpingHandsVR/identity` |
+| Foot of a static image (poster, card news) | `Credit: HelpingHandsVR Identity` |
+| Documentation of a derived asset in this repo | the string above, plus a note that it is derived |
+
+Rules:
+
+- Hold an outro credit for **at least 3 seconds**, at **4.5:1 or better** contrast against its background.
+- If you modified the mark (recolor, monochrome, replaced background), say so beside the credit.
+  For example: `Credit: HelpingHandsVR Identity (modified for broadcast)`
+- Never shrink the credit into a watermark until it can no longer be read.
+
+---
+
+## 2. Choosing an asset
+
+| Situation | Asset |
+| --- | --- |
+| Dark or busy background | `overlays/logo_*` (full color) — the default |
+| Anything smaller than 32 px | `overlays/logo_precomposed_*` — no clip mask, so edges stay clean at low resolution |
+| White or light background | `overlays/logo_positive_space_*` (single color) |
+| The mark has to sit directly on white | `overlays/hands_outlined_*` |
+| Corner watermark | `overlays/watermark_logo_*` — **alpha 70% already applied** |
+| Identity over live footage | `badges/badge_avatar_*`, `badges/badge_lower_third_*` |
+| Sign-language avatar identity chip | `badges/badge_avatar_*_128` or larger |
+| Checking layout margins | `templates/guides/*_guide.png` |
+
+Use the `.svg` / `.ai` sources in `logo/` directly whenever you need vectors. The rasters under
+`media-team/` are **conveniences**; print and large-format work uses the vectors.
+
+---
+
+## 3. Spacing
+
+### 3.1 Clear space
+
+Writing **D** for the width of the mark's bounding box, keep **at least 0.25 D** clear on every side.
+
+> In the 2025 design the hands break past the edge of the circle, so D is measured on the
+> **bounding box of the whole mark, not the diameter of the circle**.
+
+No captions, lower thirds, progress bars, other logos or decorative elements enter that space.
+
+### 3.2 Corner watermark
+
+- Inset **5% of the frame height** from each edge (inside the title-safe area).
+- Watermark diameter = **6% of the frame height**, with a **64 px floor**.
+- Opacity **60–80%**. The shipped assets are fixed at 70%.
+- Keep the corner fixed across a series. The default is the **top right**; use the top left when
+  persistent UI (subscriber count, chat overlay) already lives there.
+
+| Resolution | Edge inset | Watermark diameter | Asset |
+| --- | --- | --- | --- |
+| 1280×720 | 36 px | 64 px (floor applies) | `watermark_logo_256` |
+| 1920×1080 | 54 px | 65 px | `watermark_logo_256` |
+| 2560×1440 | 72 px | 86 px | `watermark_logo_256` |
+| 3840×2160 | 108 px | 130 px | `watermark_logo_512` |
+
+### 3.3 Intro and outro
+
+| | Intro | Outro |
+| --- | --- | --- |
+| Mark diameter | **28%** of frame height | **20%** of frame height |
+| Position | Frame center (up to ~2% optical lift allowed) | Top center |
+| Minimum hold | **1.5 s** | **3 s**, credit included |
+| Fade | 0.3–0.5 s | 0.5 s |
+| Surrounding space | nothing within **0.5 D** of the mark | credit text sits **0.5 D** below the mark |
+
+- Keep intro and outro backgrounds **flat or low-saturation**. If the mark has to sit over a clip, put a scrim under it (§4.3).
+- Only **fades, uniform scaling and position moves** are allowed. No squash and stretch, rotation, skew, or animating the parts separately (§5).
+
+### 3.4 Lower thirds and identity display
+
+- The `badges/badge_lower_third_*` plates carry the mark in the left cap; the rest is the **text area**.
+- Writing H for the plate height, the mark is fixed at diameter `0.72 H`, inset `0.14 H` from the left.
+  Adding the clear space from §3.1 (`0.25 D`), text starts **`1.04 H` from the left**. Right padding is `0.28 H`.
+
+| Plate | Mark | Text area (x) | Text width |
+| --- | --- | --- | --- |
+| `960×160` (1080p) | ⌀115 px at x=22 | 166 – 915 px | 749 px |
+| `1440×240` (4K) | ⌀173 px at x=34 | 250 – 1373 px | 1123 px |
+
+- Place the plate **inside the action-safe area (93% of the frame)**, lifted **8% of the frame height** off the bottom edge.
+- On an interpreted stream the **interpreter's signing space comes first**. If the lower third collides
+  with it, move it to the opposite side; if it still collides, use `badge_avatar_*` instead.
+
+---
+
+## 4. Minimum size and background contrast
+
+### 4.1 Minimum size
+
+| Use | Minimum diameter | Asset |
+| --- | --- | --- |
+| 1080p broadcast watermark | 64 px | `watermark_logo_256` |
+| 4K broadcast watermark | 128 px | `watermark_logo_512` |
+| Thumbnail / card news brand block | 8% of the short edge (86 px at 1080) | `logo_256` |
+| Sign-language avatar identity chip | 128 px | `badge_avatar_*_128` |
+| Screen / UI | 24 px | `logo_precomposed_256` |
+| Print | 10 mm | `logo/logo.svg` |
+
+- **Below 32 px** the clip-mask edge breaks up, so always use `logo_precomposed_*`.
+- **Below 24 px** drop the mark and use a text credit instead.
+- Never upscale. Come down from a **larger** source, and re-render with `generate.py` if none is large enough.
+
+### 4.2 Background contrast
+
+Measured with WCAG 2.1 relative luminance:
+
+| Brand color | On white | On black | On scrim `#0B1218` |
+| --- | --- | --- | --- |
+| Helping Hands Blue `#3291D3` | **3.43:1** | 6.13:1 | 5.50:1 |
+| Helping Hands Green `#4DCE7D` | **2.01:1** | 10.44:1 | 9.37:1 |
+| White hands `#FFFFFF` | 1.00:1 | 21.00:1 | 18.85:1 |
+
+Rules:
+
+- The mark's edge needs **3:1 or better** against its backdrop.
+- **Helping Hands Green measures 2.01:1 on white, below that bar.** On light backgrounds do not place
+  the full-color mark directly — use `logo_positive_space_*` or `hands_outlined_*`.
+- The white hands measure 2.01:1 against the green section. That is internal to the mark and is not
+  ours to change, but it is why the minimum sizes in §4.1 exist: **never shrink the mark to the point
+  where the hands mush together**.
+
+### 4.3 Over live footage
+
+Footage brightness changes frame to frame, so a static contrast calculation does not hold.
+**Always put the mark on a scrim plate when it sits over footage.**
+
+| Scrim | Value | Use |
+| --- | --- | --- |
+| Dark | `#0B1218` @ 72% | Bright or high-contrast footage |
+| Light | `#FFFFFF` @ 86% | Dark, even footage |
+
+Every asset in `badges/` already carries one of these. Use the same values if you build your own.
+
+---
+
+## 5. Prohibited
+
+In addition to the rules in `GUIDELINES.md`, media work never does the following.
+
+- **Rotate, skew, mirror or non-uniformly scale** the mark
+- Move the hands and the circle **independently**, animate parts separately, or squash and stretch
+- Add **drop shadows, glows, bevels or outlines** to the mark (except the white-background outline `GUIDELINES.md` permits)
+- Lay **captions, stickers or emoji over the mark**, or use the mark as a caption backing plate
+- Drop watermark opacity **below 60%**, to the point the mark is unidentifiable
+- **Replace the gradient colors** without approval (follow §6). Monochrome substitutes such as
+  `watermark_mono_light_*` are for **technical constraints only** and need staff sign-off before routine use.
+- Any use **outside a PG-13 standard**, or in a context that defames or harasses a person or group
+
+---
+
+## 6. Contributing back upstream
+
+Assets the media team builds that are **generally useful to the whole community** go back to
+upstream `HelpingHandsVR/identity`.
+
+### 6.1 What goes up, what stays
+
+| PR to upstream | Stays in this fork (`media-team/`) |
+| --- | --- |
+| New vector sources, general-purpose logo variants | Campaign- or episode-specific comps |
+| Reproducible generator scripts | One-off assets cut to a particular broadcast layout |
+| Documentation fixes — typos, wrong figures | Internal team workflow notes |
+| General specifications (e.g. watermark spacing) | Team schedules and owner information |
+
+> The `media-team/` path itself never goes upstream. That separation is what keeps upstream merges conflict-free.
+
+### 6.2 Procedure
+
+```bash
+# 1. Register the upstream original (once)
+git remote add upstream https://github.com/HelpingHandsVR/identity.git
+
+# 2. Confirm the base branch (v2025 as of 2026-09)
+git remote show upstream | sed -n '/HEAD branch/p'
+
+# 3. Fetch the latest original and branch from it
+git fetch upstream
+git switch -c feat/<topic> upstream/v2025
+
+# 4. Push to this fork
+git push -u origin feat/<topic>
+```
+
+Then open a pull request on GitHub from `LeeSimYul/HHidentity:feat/<topic>` to `HelpingHandsVR/identity:v2025`.
+
+### 6.3 Pre-PR checklist
+
+- [ ] Does the change respect the color, orientation and composition rules in `GUIDELINES.md`?
+- [ ] Did you include the **vector source or the generator**, not only rasters?
+- [ ] For generated assets, is the **reproduction command** (e.g. `python media-team/generate.py`) in the PR body?
+- [ ] If it introduces a new color, typeface or variant of the mark, is the **staff approval** attached?
+- [ ] Does it pull in outside assets (fonts, photos, icons)? If so, is their license stated?
+- [ ] Are the commits scoped to a single topic?
+- [ ] Did any team-only file from `media-team/` slip in?
+
+### 6.4 Syncing with upstream
+
+When the original is updated, bring the fork along.
+
+```bash
+git fetch upstream
+git switch v2025
+git merge --ff-only upstream/v2025
+git push origin v2025
+```
+
+After any sync that touches the logo sources (`logo/`), **regenerate the derived assets**.
+
+```bash
+pip install -r media-team/requirements.txt
+python media-team/generate.py
+git add media-team
+git commit -m "chore: regenerate media-team assets for upstream logo update"
+```
+
+---
+
+## 7. Regenerating assets
+
+Everything under `media-team/overlays`, `media-team/badges` and `media-team/templates/guides` is
+**output from `media-team/generate.py`**. Do not hand-edit it — change the constants and re-run.
+
+```bash
+pip install -r media-team/requirements.txt
+python media-team/generate.py
+```
+
+To change a specification, edit the constants at the top of `generate.py` (`WATERMARK_ALPHA`,
+`DARK_PLATE`, `MARGIN_RATIO`, `LOGO_MIN_RATIO`, …) **and update the matching figures in this document**.
+
+---
+
+<details>
+<summary><strong>한국어 (Korean)</strong></summary>
+
+> 위 영문 문서의 국문판입니다. 두 판본이 어긋날 경우 **영문판을 기준**으로 삼고, 어긋난 부분은 이슈로 알려 주세요.
 
 이 문서는 **미디어 팀이 영상·방송·소셜 콘텐츠를 제작할 때** 지켜야 할 지침입니다.
 상위 문서인 [GUIDELINES.md](../GUIDELINES.md)(HelpingHandsVR 브랜드 원칙)를 대체하지 않으며, 이를 **보완**합니다.
@@ -248,19 +517,4 @@ python media-team/generate.py
 
 규격을 바꾸려면 `generate.py` 상단의 상수(`WATERMARK_ALPHA`, `DARK_PLATE`, `MARGIN_RATIO`, `LOGO_MIN_RATIO` 등)를 수정하고, **이 문서의 해당 수치도 함께 갱신**합니다.
 
----
-
-## English summary
-
-These guidelines supplement — never replace — the upstream [GUIDELINES.md](../GUIDELINES.md). Where the two disagree, upstream wins.
-
-- **License.** Neither this fork nor upstream ships a `LICENSE` file, so the mark is usable only within the community rules and `GUIDELINES.md`. Ask staff before any external or commercial use.
-- **Credit.** Every piece carries `Credit: HelpingHandsVR Identity`; descriptions carry the full line with the upstream URL. Outro credits hold for at least 3 seconds at 4.5:1 contrast or better. Note any modification, e.g. `(modified for broadcast)`.
-- **Clear space.** At least `0.25 D` on all sides, where `D` is the width of the mark's bounding box — not the circle, because the hands break past the circle edge in the 2025 design.
-- **Corner watermark.** Inset 5% of frame height; diameter 6% of frame height with a 64 px floor; 60–80% opacity (shipped assets are 70%); fixed corner per series.
-- **Intro / outro.** Mark at 28% / 20% of frame height, held ≥1.5 s / ≥3 s, with `0.5 D` kept clear around it. Fade, uniform scale and position moves only.
-- **Minimum size.** 64 px at 1080p, 128 px at 4K, 24 px in UI, 10 mm in print. Below 32 px use `logo_precomposed_*`; below 24 px use text instead of the mark.
-- **Contrast.** The mark's edge needs ≥3:1 against its backdrop. Helping Hands Green measures **2.01:1 on white**, so use `logo_positive_space_*` or `hands_outlined_*` on light backgrounds. Over live footage always use a scrim plate from `badges/` (`#0B1218` @ 72% dark, `#FFFFFF` @ 86% light).
-- **Never** rotate, mirror, skew, non-uniformly scale, shadow, glow, or animate the mark's parts independently.
-- **Contributing back.** Generally useful assets go upstream via `git remote add upstream https://github.com/HelpingHandsVR/identity.git`, branched from `upstream/v2025`; team-specific comps stay in `media-team/`, which keeps upstream merges conflict-free. See §6.3 for the pre-PR checklist.
-- **Regenerating.** Everything under `overlays/`, `badges/` and `templates/guides/` is generated by `media-team/generate.py`. Edit the constants, not the files.
+</details>

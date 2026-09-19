@@ -1,17 +1,72 @@
 
 # Templates
 
+Size specifications and margin guides for video thumbnails, posters and card news.
+
+Rather than tool-specific project files (`.psd`, `.aep`, `.prproj`), this folder ships **transparent
+guide PNGs that work in any tool**. Drop one on the top layer, align to it, and hide the layer before
+you export.
+
+## Specifications
+
+| Use | Size (px) | Ratio | Guide |
+| --- | --- | --- | --- |
+| Video thumbnail (standard) | 1280 × 720 | 16:9 | `guides/thumbnail_1280x720_guide.png` |
+| Video frame / high-res thumbnail | 1920 × 1080 | 16:9 | `guides/thumbnail_1920x1080_guide.png` |
+| Poster, A3 portrait (150 dpi) | 1754 × 2480 | 297 × 420 mm | `guides/poster_a3_1754x2480_guide.png` |
+| Card news, square | 1080 × 1080 | 1:1 | `guides/cardnews_1080x1080_guide.png` |
+| Card news, portrait | 1080 × 1350 | 4:5 | `guides/cardnews_1080x1350_guide.png` |
+| Story / shorts | 1080 × 1920 | 9:16 | `guides/story_1080x1920_guide.png` |
+
+## Margins
+
+Margins are derived from the **short edge**: a 6% outer margin, the copy-safe area one margin further
+in, and a brand block no smaller than 8% of the short edge.
+
+| Format | Outer margin | Copy-safe area | Logo minimum | Clear space |
+| --- | --- | --- | --- | --- |
+| 1280 × 720 | 43 px | 86 px | 58 px | 14 px |
+| 1920 × 1080 | 65 px | 130 px | 86 px | 22 px |
+| 1754 × 2480 | 105 px | 210 px | 140 px | 35 px |
+| 1080 × 1080 | 65 px | 130 px | 86 px | 22 px |
+| 1080 × 1350 | 65 px | 130 px | 86 px | 22 px |
+| 1080 × 1920 | 65 px | 130 px | 86 px | 22 px |
+
+## Reading a guide
+
+| Mark | Meaning |
+| --- | --- |
+| Pink dashes (outer) | Trim margin — nothing crosses it |
+| Blue dashes (inner) | Copy-safe area — headlines and body text stay inside |
+| Green squares (bottom right) | The **minimum** brand block and its clear space |
+| Caption (top left) | The format name and the figures above |
+
+- The brand block defaults to the **bottom right**. You may move it if the layout needs it, but keep
+  the position fixed across a series.
+- The green square is a **minimum**. Larger is fine; smaller is not.
+- For print delivery, treat the guide as reference only and place the mark from the `logo/logo.svg` vector.
+- Over a photographic background, do not place the mark bare — use a scrim badge from
+  [`../badges`](../badges) or `logo_positive_space`
+  ([`../MEDIA_GUIDELINES.md`](../MEDIA_GUIDELINES.md) §4.2 and §4.3).
+
+## Adding a format
+
+Add an entry to `TEMPLATE_GUIDES` in `generate.py` and re-run it. Update the table above to match.
+
+> Files in `guides/` are generated — do not hand-edit; re-run `python media-team/generate.py`.
+
+---
+
+<details>
+<summary><strong>한국어 (Korean)</strong></summary>
+
 영상 썸네일 · 포스터 · 카드뉴스의 **규격과 여백 가이드**입니다.
-Size specs and margin guides for video thumbnails, posters and card news.
 
 이 폴더는 편집 도구의 프로젝트 파일(`.psd`, `.aep`, `.prproj`) 대신 **도구에 상관없이 쓸 수 있는
 투명 가이드 PNG** 를 제공합니다. 작업 캔버스 맨 위에 가이드를 올려 여백을 맞추고, 내보내기 전에
 가이드 레이어를 끄면 됩니다.
 
-Rather than tool-specific project files, this folder ships transparent guide PNGs.
-Drop one on the top layer, align to it, and hide the layer before export.
-
-## 규격 / Specifications
+## 규격
 
 | 용도 | 크기 (px) | 비율 | 가이드 |
 | --- | --- | --- | --- |
@@ -22,7 +77,7 @@ Drop one on the top layer, align to it, and hide the layer before export.
 | 카드뉴스 세로 | 1080 × 1350 | 4:5 | `guides/cardnews_1080x1350_guide.png` |
 | 스토리 · 쇼츠 | 1080 × 1920 | 9:16 | `guides/story_1080x1920_guide.png` |
 
-## 여백 / Margins
+## 여백
 
 여백은 **짧은 변을 기준**으로 계산합니다. 바깥 여백 6%, 그 안쪽으로 한 번 더 들어간 곳이 본문 안전 영역,
 브랜드 블록의 최소 크기는 짧은 변의 8% 입니다.
@@ -36,7 +91,7 @@ Drop one on the top layer, align to it, and hide the layer before export.
 | 1080 × 1350 | 65 px | 130 px | 86 px | 22 px |
 | 1080 × 1920 | 65 px | 130 px | 86 px | 22 px |
 
-## 가이드 읽는 법 / Reading a guide
+## 가이드 읽는 법
 
 | 표시 | 의미 |
 | --- | --- |
@@ -52,10 +107,11 @@ Drop one on the top layer, align to it, and hide the layer before export.
 - 배경이 사진이면 마크를 그대로 올리지 말고 [`../badges`](../badges) 의 스크림 배지를 쓰거나
   `logo_positive_space` 를 사용합니다 ([`../MEDIA_GUIDELINES.md`](../MEDIA_GUIDELINES.md) §4.2 · §4.3).
 
-## 규격 추가 / Adding a format
+## 규격 추가
 
 `generate.py` 의 `TEMPLATE_GUIDES` 에 항목을 추가하고 다시 실행하면 가이드가 생성됩니다.
 이 문서의 표도 함께 갱신해 주세요.
 
 > `guides/` 의 파일은 생성물입니다. 직접 수정하지 말고 `python media-team/generate.py` 로 다시 만드세요.
-> Generated — do not hand-edit; re-run `python media-team/generate.py`.
+
+</details>

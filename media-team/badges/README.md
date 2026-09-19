@@ -1,8 +1,62 @@
 
 # Badges
 
+Identity badges for broadcast lower thirds and **sign-language avatar name chips**.
+
+Footage brightness changes frame to frame, so a static contrast calculation does not hold. Every badge
+therefore ships with a **scrim plate** already applied.
+
+| Style | Scrim | Mark | Use |
+| --- | --- | --- | --- |
+| `dark` | `#0B1218` @ 72% | full color | Bright or high-contrast footage |
+| `light` | `#FFFFFF` @ 86% | positive space (single color) | Dark, even footage |
+
+## Files
+
+| File | Shape | Use |
+| --- | --- | --- |
+| `badge_avatar_dark_{128,256,512}` | circle | Sign-language avatar identity chip, participant tiles, profile marks |
+| `badge_avatar_light_{128,256,512}` | circle | The same, on a light scrim |
+| `badge_lower_third_dark_960x160` | pill | Lower third for a 1080p timeline |
+| `badge_lower_third_dark_1440x240` | pill | Lower third for a 4K timeline |
+| `badge_lower_third_light_960x160` | pill | 1080p, light scrim |
+| `badge_lower_third_light_1440x240` | pill | 4K, light scrim |
+
+Each file ships as `.png` and lossless `.webp`.
+
+## Text area
+
+The lower-third plates **carry no type.** Names and roles are set in your editor, inside the area
+below, vertically centered.
+
+| Plate | Mark | Text area (x) | Text width |
+| --- | --- | --- | --- |
+| `960×160` | ⌀115 px at x=22 | 166 – 915 px | 749 px |
+| `1440×240` | ⌀173 px at x=34 | 250 – 1373 px | 1123 px |
+
+- Keep text at **4.5:1 or better** against the scrim.
+- If the text overflows, do not shrink it — **widen the plate** and regenerate
+  (`LOWER_THIRD_SIZES` in `generate.py`).
+- There is no designated brand typeface. Use the team standard; adding a typeface as a repository
+  asset needs staff approval and a font license check.
+
+## Placement
+
+- Inside the action-safe area (93% of the frame), lifted **8% of the frame height** off the bottom edge.
+- Render avatar chips at **128 px or larger**.
+- On an interpreted stream the **interpreter's signing space comes first**. If the lower third collides
+  with it, move it to the opposite side; if it still collides, use `badge_avatar_*` instead.
+
+Full rules: [`../MEDIA_GUIDELINES.md`](../MEDIA_GUIDELINES.md) §3.4 and §4.3.
+
+> Generated — do not hand-edit; re-run `python media-team/generate.py`.
+
+---
+
+<details>
+<summary><strong>한국어 (Korean)</strong></summary>
+
 방송 화면 하단(로어서드)과 **수어 아바타 신원 표시**에 쓰는 미디어 배지입니다.
-Identity badges for broadcast lower thirds and sign-language avatar name chips.
 
 실사 푸티지는 프레임마다 밝기가 바뀌므로 정적인 대비 계산이 성립하지 않습니다.
 그래서 모든 배지에는 **스크림 플레이트**가 미리 적용되어 있습니다.
@@ -12,7 +66,7 @@ Identity badges for broadcast lower thirds and sign-language avatar name chips.
 | `dark` | `#0B1218` @ 72% | 풀컬러 | 밝거나 대비가 심한 푸티지 |
 | `light` | `#FFFFFF` @ 86% | 포지티브 스페이스(단색) | 어둡고 균일한 푸티지 |
 
-## 파일 / Files
+## 파일
 
 | 파일 | 크기 | 용도 |
 | --- | --- | --- |
@@ -25,7 +79,7 @@ Identity badges for broadcast lower thirds and sign-language avatar name chips.
 
 각 파일은 `.png` 와 무손실 `.webp` 로 제공됩니다.
 
-## 텍스트 영역 / Text area
+## 텍스트 영역
 
 로어서드 플레이트에는 **글자가 들어 있지 않습니다.** 이름·직책은 편집 도구에서 직접 올리며,
 아래 영역 안에 배치하고 세로 중앙 정렬합니다.
@@ -41,7 +95,7 @@ Identity badges for broadcast lower thirds and sign-language avatar name chips.
 - 브랜드 전용 서체는 지정되어 있지 않습니다. 팀 표준 서체를 쓰되, 새 서체를 자산으로
   추가하려면 스태프 승인과 폰트 라이선스 확인이 필요합니다.
 
-## 배치 / Placement
+## 배치
 
 - 액션 세이프 영역(프레임의 93%) 안, 하단 가장자리로부터 프레임 높이의 **8%** 위.
 - 아바타 칩은 **최소 128 px** 이상으로 표시합니다.
@@ -51,4 +105,5 @@ Identity badges for broadcast lower thirds and sign-language avatar name chips.
 자세한 규정은 [`../MEDIA_GUIDELINES.md`](../MEDIA_GUIDELINES.md) §3.4 · §4.3 참조.
 
 > 생성물입니다. 직접 수정하지 말고 `python media-team/generate.py` 로 다시 만드세요.
-> Generated — do not hand-edit; re-run `python media-team/generate.py`.
+
+</details>
