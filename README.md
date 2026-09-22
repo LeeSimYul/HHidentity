@@ -26,6 +26,7 @@ conflict-free.
 
 | Path | Contents |
 | --- | --- |
+| [`media-team/README.md`](media-team/README.md) | **Media team operating guide** — Drive folder structure, `YYMMDD` naming convention, version control, 5-person collaboration rules (Korean edition: [`README.ko.md`](media-team/README.ko.md)) |
 | [`media-team/MEDIA_GUIDELINES.md`](media-team/MEDIA_GUIDELINES.md) | Media team guidelines — licensing and credit, clear space, minimum sizes and contrast, contributing back upstream |
 | [`media-team/overlays/`](media-team/overlays) | Transparent PNG/WebP logo overlays for OBS, Premiere Pro and After Effects |
 | [`media-team/templates/`](media-team/templates) | Thumbnail, poster and card news specifications with margin guides |
@@ -92,6 +93,7 @@ The procedure for contributing assets back upstream is in
 
 | 경로 | 내용 |
 | --- | --- |
+| [`media-team/README.md`](media-team/README.md) | **미디어 팀 운영 안내서** — 드라이브 폴더 구조, `YYMMDD` 파일 명명 규칙, 버전 관리, 5인 협업 규칙 (국문판: [`README.ko.md`](media-team/README.ko.md)) |
 | [`media-team/MEDIA_GUIDELINES.md`](media-team/MEDIA_GUIDELINES.md) | 미디어 팀 지침 — 라이선스·출처 표기, 여백, 최소 크기·대비, 역기여 절차 |
 | [`media-team/overlays/`](media-team/overlays) | OBS / Premiere Pro / After Effects 용 투명 PNG·WebP 로고 오버레이 |
 | [`media-team/templates/`](media-team/templates) | 썸네일 · 포스터 · 카드뉴스 규격과 여백 가이드 |
