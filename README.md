@@ -14,6 +14,7 @@ This is a fork of **[HelpingHandsVR/identity](https://github.com/HelpingHandsVR/
 | | |
 | --- | --- |
 | Upstream | `HelpingHandsVR/identity` (default branch `v2025`) |
+| This fork's default branch | **`v2026`** — the current reference point, where work lands |
 | Role of this fork | The upstream brand assets, plus a **media team motion and broadcast pipeline** |
 | Extension assets | [`media-team/`](media-team) |
 | Extension revision | 2026 Edition, built on the 2025 design by Madison |
@@ -46,6 +47,14 @@ python media-team/generate.py
 3. The `README.md` in each folder — file lists and placement figures
 4. Credit every piece: `Credit: HelpingHandsVR Identity`
 
+### Branches
+
+| Branch | Role |
+| --- | --- |
+| **`v2026`** | This fork's default branch. Upstream assets + the media team extensions; every change lands here |
+| `v2025` | The 2025 edition snapshot, kept for reference. Not updated day to day |
+| `upstream/v2025` | The original repository's default branch — what we merge *from* |
+
 ### Staying in sync with upstream
 
 Register the `upstream` remote to keep following the original repository.
@@ -57,12 +66,18 @@ git remote add upstream https://github.com/HelpingHandsVR/identity.git
 # confirm the original default branch (v2025 as of 2026-09)
 git remote show upstream | sed -n '/HEAD branch/p'
 
-# sync
+# sync upstream into this fork's default branch
 git fetch upstream
-git switch v2025
-git merge --ff-only upstream/v2025
-git push origin v2025
+git switch v2026
+git merge upstream/v2025
+git push origin v2026
 ```
+
+> [!NOTE]
+> This fork carries its own commits under `media-team/`, so `v2026` is **not** a fast-forward of
+> `upstream/v2025`. Earlier editions of this README used `git merge --ff-only`, which now fails by
+> design — use the plain merge above. It stays conflict-free as long as the upstream assets
+> (`logo/`, `logo_variants/`, `GUIDELINES.md`) are never edited here.
 
 Re-run `python media-team/generate.py` after any sync that touches `logo/`.
 The procedure for contributing assets back upstream is in
@@ -82,6 +97,7 @@ The procedure for contributing assets back upstream is in
 | 항목 | 값 |
 | --- | --- |
 | Upstream | `HelpingHandsVR/identity` (기본 브랜치 `v2025`) |
+| 이 포크의 기본 브랜치 | **`v2026`** — 현재 기준점이며 모든 작업이 반영되는 브랜치 |
 | 이 포크의 역할 | 원본 브랜드 자산 + **미디어 팀 모션/방송 파이프라인 확장** |
 | 확장 자산 위치 | [`media-team/`](media-team) |
 | 확장 버전 | 2026 Edition (2025 design by Madison 기반) |
@@ -113,6 +129,14 @@ python media-team/generate.py
 3. 각 폴더의 `README.md` — 파일 목록과 배치 수치
 4. 결과물에 출처 표기: `Credit: HelpingHandsVR Identity`
 
+### 브랜치 구성
+
+| 브랜치 | 역할 |
+| --- | --- |
+| **`v2026`** | 이 포크의 기본 브랜치. 원본 자산 + 미디어 팀 확장이 모두 모이는 곳이며, 모든 변경은 여기로 반영됩니다 |
+| `v2025` | 2025 에디션 스냅샷. 참고용으로 보존하며 상시 갱신하지 않습니다 |
+| `upstream/v2025` | 원본 저장소의 기본 브랜치 — 우리가 **가져오는** 쪽 |
+
 ### Upstream 동기화
 
 원본 저장소의 변경사항을 계속 따라가려면 `upstream` 리모트를 등록합니다.
@@ -124,12 +148,18 @@ git remote add upstream https://github.com/HelpingHandsVR/identity.git
 # 원본 기본 브랜치 확인 (2026-09 기준 v2025)
 git remote show upstream | sed -n '/HEAD branch/p'
 
-# 동기화
+# 이 포크의 기본 브랜치로 동기화
 git fetch upstream
-git switch v2025
-git merge --ff-only upstream/v2025
-git push origin v2025
+git switch v2026
+git merge upstream/v2025
+git push origin v2026
 ```
+
+> [!NOTE]
+> 이 포크에는 `media-team/` 아래의 자체 커밋이 있으므로 `v2026` 은 `upstream/v2025` 의 fast-forward 가
+> **아닙니다.** 이전 판의 README 가 쓰던 `git merge --ff-only` 는 이제 구조상 실패하므로 위의 일반 병합을
+> 사용합니다. 원본 자산(`logo/`, `logo_variants/`, `GUIDELINES.md`)을 수정하지 않는 한 이 병합은 충돌 없이
+> 끝납니다.
 
 `logo/` 가 변경된 동기화 이후에는 `python media-team/generate.py` 로 파생 자산을 다시 만듭니다.
 원본에 역기여(PR)하는 절차는

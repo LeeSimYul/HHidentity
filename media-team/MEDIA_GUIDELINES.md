@@ -230,13 +230,14 @@ Then open a pull request on GitHub from `LeeSimYul/HHidentity:feat/<topic>` to `
 
 ### 6.4 Syncing with upstream
 
-When the original is updated, bring the fork along.
+When the original is updated, bring the fork along. Merge into `v2026`, this fork's default branch —
+`--ff-only` no longer applies, because the fork carries its own commits under `media-team/`.
 
 ```bash
 git fetch upstream
-git switch v2025
-git merge --ff-only upstream/v2025
-git push origin v2025
+git switch v2026
+git merge upstream/v2025
+git push origin v2026
 ```
 
 After any sync that touches the logo sources (`logo/`), **regenerate the derived assets**.
@@ -486,13 +487,14 @@ git push -u origin feat/<주제>
 
 ### 6.4 upstream 동기화
 
-원본이 갱신되면 포크를 따라 올립니다.
+원본이 갱신되면 포크를 따라 올립니다. 이 포크의 기본 브랜치인 `v2026` 으로 병합하며, 포크에 `media-team/`
+자체 커밋이 있으므로 `--ff-only` 는 더 이상 사용할 수 없습니다.
 
 ```bash
 git fetch upstream
-git switch v2025
-git merge --ff-only upstream/v2025
-git push origin v2025
+git switch v2026
+git merge upstream/v2025
+git push origin v2026
 ```
 
 로고 소스(`logo/`)가 바뀐 동기화 이후에는 **파생 자산을 반드시 다시 생성**합니다.
