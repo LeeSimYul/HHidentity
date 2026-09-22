@@ -27,6 +27,7 @@ conflict-free.
 | Path | Contents |
 | --- | --- |
 | [`media-team/MEDIA_GUIDELINES.md`](media-team/MEDIA_GUIDELINES.md) | Media team guidelines — licensing and credit, clear space, minimum sizes and contrast, contributing back upstream |
+| [`media-team/workflow/`](media-team/workflow) | Drive folder structure, file naming convention and version control for the 5-person team |
 | [`media-team/overlays/`](media-team/overlays) | Transparent PNG/WebP logo overlays for OBS, Premiere Pro and After Effects |
 | [`media-team/templates/`](media-team/templates) | Thumbnail, poster and card news specifications with margin guides |
 | [`media-team/badges/`](media-team/badges) | Lower-third and sign-language avatar identity badges |
@@ -93,6 +94,7 @@ The procedure for contributing assets back upstream is in
 | 경로 | 내용 |
 | --- | --- |
 | [`media-team/MEDIA_GUIDELINES.md`](media-team/MEDIA_GUIDELINES.md) | 미디어 팀 지침 — 라이선스·출처 표기, 여백, 최소 크기·대비, 역기여 절차 |
+| [`media-team/workflow/`](media-team/workflow) | 5인 팀 공용 드라이브 구조 · 파일 명명 규칙 · 버전 관리 (영문판) |
 | [`media-team/overlays/`](media-team/overlays) | OBS / Premiere Pro / After Effects 용 투명 PNG·WebP 로고 오버레이 |
 | [`media-team/templates/`](media-team/templates) | 썸네일 · 포스터 · 카드뉴스 규격과 여백 가이드 |
 | [`media-team/badges/`](media-team/badges) | 방송 로어서드 · 수어 아바타 신원 표시용 미디어 배지 |

@@ -13,6 +13,7 @@ never modified, which keeps merges from `HelpingHandsVR/identity` conflict-free.
 | Path | Contents |
 | --- | --- |
 | [`MEDIA_GUIDELINES.md`](MEDIA_GUIDELINES.md) | Media team guidelines — licensing and credit, spacing, minimum sizes, contrast, contributing back upstream |
+| [`workflow/`](workflow) | Drive folder structure, file naming convention and version control for the 5-person team |
 | [`overlays/`](overlays) | Transparent PNG/WebP logo overlays for OBS, Premiere Pro and After Effects |
 | [`templates/`](templates) | Thumbnail, poster and card news specifications with margin guides |
 | [`badges/`](badges) | Lower-third and sign-language avatar identity badges |
@@ -54,6 +55,7 @@ The full strings and rules are in
 | 경로 | 내용 |
 | --- | --- |
 | [`MEDIA_GUIDELINES.md`](MEDIA_GUIDELINES.md) | 미디어 팀 지침 (라이선스·여백·최소 크기·대비·역기여 절차) |
+| [`workflow/`](workflow) | 5인 팀 공용 드라이브 구조 · 파일 명명 규칙 · 버전 관리 (영문판) |
 | [`overlays/`](overlays) | OBS / Premiere Pro / After Effects 용 투명 PNG·WebP 로고 오버레이 |
 | [`templates/`](templates) | 썸네일 · 포스터 · 카드뉴스 규격과 여백 가이드 |
 | [`badges/`](badges) | 방송 로어서드 · 수어 아바타 신원 표시용 미디어 배지 |
